@@ -15,7 +15,7 @@ namespace VS_GitHub.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Hello GitHub!";
+            ViewData["Message"] = "Hello GitHub! update2";
 
             return View();
         }
