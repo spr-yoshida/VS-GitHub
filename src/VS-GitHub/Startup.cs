@@ -7,6 +7,8 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using VS_GitHub.Models;
+using Microsoft.Data.Entity;
 
 namespace VS_GitHub
 {
@@ -26,6 +28,12 @@ namespace VS_GitHub
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=vs-github;Trusted_Connection=True;";
+
+            services.AddEntityFramework()
+                .AddSqlServer()
+                .AddDbContext<BloggingContext>(options => options.UseSqlServer(connection));
+
             // Add framework services.
             services.AddMvc();
         }
